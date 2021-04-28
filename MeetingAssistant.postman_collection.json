@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "60423c2a-a7b8-4eb4-9281-6eb974ab41a2",
+		"name": "MeetingAssistant",
+		"description": "Testing spring-boot demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getEmployee",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "b239b6f3-59ba-4031-817f-9e8f726868a6",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "user",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/employees",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createEmployee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"emp_id\": \"E007\",\n    \"name\": \"Ramneek\",\n    \"location\": \"Bangalore\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/employee",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createMeeting",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"agenda\": \"Discussion\",\r\n    \"startTime\": \"2021-04-19T11:00:00.00Z\",\r\n    \"endTime\": \"2021-04-19T11:30:00.00Z\",\r\n    \"employees\": [\r\n        \"E001\",\r\n        \"E006\",\r\n        \"E007\"\r\n        ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employee/meeting",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"meeting"
+					],
+					"query": [
+						{
+							"key": "employee_id",
+							"value": "e001",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllMeeting",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employee/E001/meeting/2021-04-19T20:53:07.028",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"E001",
+						"meeting",
+						"2021-04-19T20:53:07.028"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFreeSlots",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/employee/date/2021-04-18T20:53:07.028/E001/freeslots/E002",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"date",
+						"2021-04-18T20:53:07.028",
+						"E001",
+						"freeslots",
+						"E002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetConflicts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/meeting/conflict/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"meeting",
+						"conflict",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
